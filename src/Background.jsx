@@ -40,7 +40,7 @@ function Background() {
           }}
         />
       ))}
-      <img src={myLove} style={{position: "absolute", top: "905px",left: "008px", rotate: "18deg"}}/>
+      <img src={myLove} style={{position: "fixed", top: "100%",left: "0%"}}/>
     </div>
   );
 }
