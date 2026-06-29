@@ -3,15 +3,33 @@ import spider from './assets/pajonczek.png';
 import myLove from './assets/kochaniemoje.png';
 
 function Background() {
-  const items = useMemo(() =>
-    Array.from({length: 15}, (_, i) =>  ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        rotation: Math.random() * 360,
-        scale: Math.random() * 0.6 + 0.5,
-    })),
-    []);
+  const items = useMemo(() =>{
+      const results =[];
+      let attempts = 0;
+
+      while(results.length < 25 && attempts < 500) {
+        const x = Math.random() * 92 + 3;
+        const y = Math.random() * 92 + 3;
+
+        
+        const tooClose = x > 25 && x < 75 && y > 33 && y < 67;
+
+        if(!tooClose){
+          results.push({
+            id: results.length,
+            x,
+            y,
+            rotation: Math.random() * 360,
+            scale: Math.random() * 0. + 0.8,
+            opacity: 0.8
+          })
+        }
+        attempts++
+      }
+
+      return results
+  },
+  []);
     
   return (
     <div
@@ -40,7 +58,7 @@ function Background() {
           }}
         />
       ))}
-      <img src={myLove} style={{position: "fixed", top: "100%",left: "0%"}}/>
+      <img src={myLove} style={{position: "fixed", top: "95%",left: "0%", width: '32px'}}/>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 #  Budgeting App
 
-This is my small private project for budgeting. I will be usin git to follow and controll my money.
+This is my small private project for budgeting. I will be using it to follow and controll my money.
 
 ![React](https://img.shields.io/badge/React-19-61dafb?style=flat&logo=react&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-latest-646cff?style=flat&logo=vite&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-v7-ca4245?style=flat&logo=react-router&logoColor=white) ![Status](https://img.shields.io/badge/Status-In_Development-yellow?style=flat)
 
@@ -33,9 +33,8 @@ Log in with your credentials to access the main page.
 
 **Added**
 - Login page with form validation
-- Animated spider background with randomized positions
+- background with randomized positions
 - React Router setup
-- Global CSS variables with light/dark mode
 
 ---
 
