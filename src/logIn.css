@@ -1,13 +1,3 @@
-body{
-    background-image: linear-gradient(to bottom, #741018, #014d83, #010f19);
-}
-
-.pajonczek{
-    height: 50px;
-    position: absolute;
-    pointer-events: none;
-}
-
 label{
     font-size: 35px;
     padding-right: 5px;
