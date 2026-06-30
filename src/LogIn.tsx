@@ -17,22 +17,31 @@ function LogIn() {
   const [message, setMessage] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (): Promise<void> => {
-    const response = await fetch("http://localhost/BudgetingWeb/api/login.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" }, // ⚠️ poprawiono "applications" → "application"
-      body: JSON.stringify({
-        login: inputs.login,
-        password: inputs.password,
-      })
-    });
-    const data: LoginResponse = await response.json();
-    if (data.success) {
-      setMessage("");
-      navigate("/");
+  const handleSubmit = async () => {
+    try{
+      const response = await fetch("http://localhost/BudgetingWeb/api/login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }, 
+        body: JSON.stringify({
+          login: inputs.login,
+          password: inputs.password,
+        })
+      });
+      const data: LoginResponse = await response.json();
+      if (data.success) {
+        setMessage("");
+        navigate("/");
+      } else {
+        setMessage(data.message);
+      }
+    }catch (error) {
+      if (error instanceof Error) {
+      setMessage(`${error.message}`);
     } else {
-      setMessage(data.message);
+      setMessage("Unknown error contact admin");
     }
+    }
+  
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

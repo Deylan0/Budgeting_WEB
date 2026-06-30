@@ -27,7 +27,7 @@ function Background() {
           x,
           y,
           rotation: Math.random() * 360,
-          scale: Math.random() * 0.5 + 0.8, // ⚠️ poprawiono "0." → "0.5" (błąd w oryginale)
+          scale: Math.random() * 0.2 + 0.8,
           opacity: 0.8
         });
       }
