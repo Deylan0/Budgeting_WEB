@@ -29,12 +29,18 @@ Log in with your credentials to access the main page.
 
 ## 🚀 Releases
 
-### v0.1.0-alpha — 29/06/2026
+### v1.0.0-alpha — 29/06/2026
 
 **Added**
 - Login page with form validation
 - background with randomized positions
 - React Router setup
+
+---
+
+### v1.1.0-alpha - 30/06/2026
+
+**typescript implementation**
 
 ---
 
