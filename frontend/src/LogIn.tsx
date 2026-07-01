@@ -19,7 +19,7 @@ function LogIn() {
 
   const handleSubmit = async () => {
     try{
-      const response = await fetch("http://localhost/BudgetingWeb/api/login.php", {
+      const response = await fetch("http://localhost/budgetingweb/backend/src/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify({
