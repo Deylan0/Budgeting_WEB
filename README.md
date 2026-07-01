@@ -2,7 +2,7 @@
 
 This is my small private project for budgeting. I will be using it to follow and controll my money.
 
-![React](https://img.shields.io/badge/React-19-61dafb?style=flat&logo=react&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-latest-646cff?style=flat&logo=vite&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-v7-ca4245?style=flat&logo=react-router&logoColor=white) ![Status](https://img.shields.io/badge/Status-In_Development-yellow?style=flat)![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61dafb?style=flat&logo=react&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-latest-646cff?style=flat&logo=vite&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-v7-ca4245?style=flat&logo=react-router&logoColor=white) ![Status](https://img.shields.io/badge/Status-In_Development-yellow?style=flat) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
 ---
 
@@ -65,6 +65,12 @@ This is my small private project for budgeting. I will be using it to follow and
 ### v1.1.0-alpha - 30/06/2026
 
 **typescript implementation**
+
+---
+
+### v1.2.0-alpha - 02/07/2026
+
+- Dockerized the application — frontend (React/Vite), backend (PHP), and database (MySQL) now run via Docker Compose
 
 ---
 
