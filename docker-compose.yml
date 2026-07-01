@@ -1,8 +1,8 @@
 services:
-  fronend:
-    build: ./fronend
+  frontend:
+    build: ./frontend
     ports:
-      - "${FRONEND_PORT}:5137"
+      - "${FRONTEND_PORT}:5173"
     depends_on:
       - backend
 
@@ -32,7 +32,7 @@ services:
       - db_data:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      -3306:3306
+      - "${DB_PORT}:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 5s
