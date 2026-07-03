@@ -33,21 +33,15 @@ This is my small private project for budgeting. I will be using it to follow and
    - Frontend: http://localhost:5173 (or whatever port you set in `.env`)
    - Backend API: http://localhost:8000
 
-
----
-
-##  Features
-
-- 
-
 ---
 
 ##  Tech Stack
 
-- **React 19** — UI framework
-- **React Router v7** — client-side routing
-- **Vite** — build tool and dev server
-- **Cormorant Garamond** — serif font via Google Fonts
+**Frontend:** React + TypeScript, built with Vite
+**Backend:** PHP (session-based authentication, PDO for database access)
+**Database:** MySQL 9.7
+**Containerization:** Docker & Docker Compose (frontend, backend, and database each run in isolated containers)
+**Styling:** CSS
 
 ---
 
