@@ -36,7 +36,7 @@ try {
     if ($row && password_verify($data['password'], $row['password'])) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['username'] = $data['login']; 
-        echo json_encode(["success" => true, "message" => "", "username" => $_SESSION['username']] );
+        echo json_encode(["success" => true, "username" => $_SESSION['username']] );
     } else {
         echo json_encode(["success" => false, "message" => "Invalid login or password"]);
     }
