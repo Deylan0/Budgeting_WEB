@@ -74,11 +74,12 @@ This is my small private project for budgeting. I will be using it to follow and
 
 ---
 
-### v0.2.0-alpha — *(upcoming)*
+### v1.2.1-alpha - 02/07/2026
 
-**Planned**
-- Database connection for real authentication
-- Main dashboard page after login
+- Connection to Data Base via PHP
+
+---
+
 
 ---
 

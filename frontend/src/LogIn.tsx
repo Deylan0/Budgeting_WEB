@@ -19,7 +19,7 @@ function LogIn() {
 
   const handleSubmit = async () => {
     try{
-      const response = await fetch("http://localhost/budgetingweb/backend/src/login.php", {
+      const response = await fetch("/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify({
@@ -27,7 +27,14 @@ function LogIn() {
           password: inputs.password,
         })
       });
+
+      if (!response.ok) {
+        setMessage("Server error, please try again later");
+        return;
+      }
+
       const data: LoginResponse = await response.json();
+
       if (data.success) {
         setMessage("");
         navigate("/");
