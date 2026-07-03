@@ -74,7 +74,7 @@ This is my small private project for budgeting. I will be using it to follow and
 
 ---
 
-### v1.2.1-alpha - 02/07/2026
+### v1.2.1-alpha - 03/07/2026
 
 - Connection to Data Base via PHP
 
