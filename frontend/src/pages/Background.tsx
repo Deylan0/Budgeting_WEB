@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import spider from './assets/pajonczek.png';
-import myLove from './assets/kochaniemoje.png';
+import spider from '/src/assets/pajonczek.png';
+import myLove from '/src/assets/kochaniemoje.png';
 
 // Typ dla każdego elementu tła
 interface BackgroundItem {

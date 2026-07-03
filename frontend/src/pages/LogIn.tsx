@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './logIn.css'
+import '/src/logIn.css'
 import { useNavigate } from 'react-router-dom'
 
 interface LoginInputs  {
@@ -10,6 +10,7 @@ interface LoginInputs  {
 interface LoginResponse  {
   success: boolean;
   message: string;
+  username?: string;
 }
 
 function LogIn() {
@@ -21,6 +22,7 @@ function LogIn() {
     try{
       const response = await fetch("/login.php", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify({
           login: inputs.login,
@@ -29,15 +31,16 @@ function LogIn() {
       });
 
       if (!response.ok) {
-        setMessage("Server error, please try again later");
+        setMessage("Server error, please try again later"); 
         return;
       }
 
       const data: LoginResponse = await response.json();
 
+
       if (data.success) {
         setMessage("");
-        navigate("/");
+        navigate('Dashboard/'+data.username);
       } else {
         setMessage(data.message);
       }

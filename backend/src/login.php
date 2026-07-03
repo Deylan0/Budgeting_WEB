@@ -1,6 +1,7 @@
 <?php 
+session_start();
 
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Content-Type: application/json");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
@@ -33,7 +34,9 @@ try {
     $row = $stmt->fetch();
 
     if ($row && password_verify($data['password'], $row['password'])) {
-        echo json_encode(["success" => true]);
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['username'] = $data['login']; 
+        echo json_encode(["success" => true, "message" => "", "username" => $_SESSION['username']] );
     } else {
         echo json_encode(["success" => false, "message" => "Invalid login or password"]);
     }
