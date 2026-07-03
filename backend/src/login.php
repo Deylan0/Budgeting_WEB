@@ -2,6 +2,7 @@
 session_start();
 
 header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
@@ -27,7 +28,7 @@ try {
 $data = json_decode(file_get_contents("php://input"), true);
 
 try {
-    $sql="SELECT password FROM users WHERE username = :login;";
+    $sql="SELECT id, password FROM users WHERE username = :login;";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':login', $data['login']);
     $stmt->execute();

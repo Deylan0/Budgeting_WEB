@@ -11,7 +11,7 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
     },
     { 
-        path: "/dashboard/:user_id", 
+        path: "/dashboard", 
         element: <Dashboard />,
     },
 ])

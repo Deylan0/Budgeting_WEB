@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 interface LoginInputs  {
   login?: string;
-  password: string;
+  password?: string;
 }
 
 interface LoginResponse  {
@@ -39,7 +39,7 @@ function LogIn() {
 
 
       if (data.success) {
-        navigate('/dashboard/'+data.username);
+        navigate('/dashboard/');
       } else {
         setMessage(data.message);
       }
