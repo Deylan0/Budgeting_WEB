@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '/src/logIn.css'
+import styles from '/src/logIn.module.css'
 import { useNavigate } from 'react-router-dom'
 
 interface LoginInputs  {
@@ -60,26 +60,28 @@ function LogIn() {
   }
 
   return (
-    <div>
+    <div className={ styles.loginContainer }>
       <form onSubmit={(e) => e.preventDefault()}>
-        <label>Enter Login:</label>
-        <input
+        <label className={ styles.label }>Enter Login:</label>
+        <input 
+        className={ styles.input }
           type="text"
           name="login"
           value={inputs.login || ''}
           onChange={handleChange}
         />
-        <label>Enter Password:</label>
+        <label className={styles.label}>Enter Password:</label>
         <input
+          className={ styles.input }
           type="password"
           name="password"
           value={inputs.password || ''}
           onChange={handleChange}
         />
         <br />
-        <p style={{ color: "red" }}>{message}</p>
+        <p className={ styles.errorMessage }>{message}</p>
         <br />
-        <button type="button" onClick={handleSubmit}>Submit</button>
+        <button className={ styles.button } type="button" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   )

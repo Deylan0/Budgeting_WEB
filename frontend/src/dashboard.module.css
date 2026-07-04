@@ -1,0 +1,37 @@
+.dashboardDiv{
+    background-color: rgba(55, 55, 55, 0.8);
+}
+
+.header{
+    padding: 15px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.navOptions{
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.navLink {
+    background-color: rgba(255, 0, 0, 0.9);
+    margin: 10px;
+    color: black;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: inline-block;
+}
+
+.active{
+    animation: pulse 2s infinite;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+@keyframes pulse {
+    0%, 100% { background-color: rgba(255, 0, 0, 0.9); }
+    33% { background-color: rgba(0, 255, 0, 0,9); }
+    66% { background-color: rgba(0, 0, 255, 0,9); }
+}

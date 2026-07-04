@@ -1,22 +1,26 @@
-label{
+.label{
     font-size: 35px;
     padding-right: 5px;
     color: #010f19;
 }
 
-input{
+.input{
     margin-right: 30px;
     height: 35px;
 }
 
-div{
+.loginContainer{
     align-items: center;
     margin: auto;
 }
 
-button{
+.button{
     margin: 20px;
     background-color: #850607;
     padding: 5px;
     border-radius: 10px;
+}
+
+.errorMessage {
+  color: red;
 }
