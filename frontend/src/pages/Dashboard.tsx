@@ -1,24 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, NavLink, Outlet} from 'react-router-dom';
 import styles from '/src/dashboard.module.css';
+import Configuration from './Configuration';
 
 
 function Dashboard(){
     const [id, setId] = useState<number>();
     const [username, setUsername] = useState<string>();
-    const options = ['configuration', 'dashboard'];
+    const options = [
+        {label: 'Configuration', path: 'configuration'},
+        {label: 'Overview', path: ''},
+    ];
     const navigate = useNavigate();
 
-    const navLinkClass = ({ isActive, isPending, isTransitioning }: {
-    isActive: boolean;
-    isPending: boolean;
-    isTransitioning: boolean;
-    }) =>
+    const navLinkClass = ({ isActive  }: { isActive: boolean; }) =>
     [
         styles.navLink,
-        isActive ? styles.active : "",
-        isPending ? styles.pending : "",
-        isTransitioning ? styles.transitioning : "",
+        isActive ? styles.active : ""
     ].join(" ");
 
     useEffect(()=>{
@@ -44,19 +42,21 @@ function Dashboard(){
             <header className={ styles.header}>
                 <h1>Hello  { username }. Welcome to your budged managing dashboard!</h1>
             </header>
-            <nav className={styles.navOptions}>
+            <nav className={styles.navList}>
                 {options.map((option)=>
                     <NavLink 
-                    to={`/dashboard/${option}`} 
+                    to={option.path ? `/dashboard/${option.path}` : '/dashboard'}
                     end 
-                    key={option}
-                        className={navLinkClass}
+                    key={option.label}
+                    className={navLinkClass}
                     >
-                        {option}
+                        {option.label}
                     </NavLink>
                 )}
             </nav>
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
         </div>
     )
 }

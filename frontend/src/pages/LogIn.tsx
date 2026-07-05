@@ -25,8 +25,8 @@ function LogIn() {
         credentials: "include",
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify({
-          login: inputs.login,
-          password: inputs.password,
+          login: inputs.login?.trim(),
+          password: inputs.password?.trim(),
         })
       });
 
@@ -39,7 +39,7 @@ function LogIn() {
 
 
       if (data.success) {
-        navigate('/dashboard/');
+        navigate('/dashboard');
       } else {
         setMessage(data.message);
       }

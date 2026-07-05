@@ -3,6 +3,8 @@ import LogIn from './LogIn';
 import Background from './Background';
 import Dashboard from './Dashboard';
 import NotFound from './NotFound';
+import Configuration from './Configuration';
+import Overview  from './Overview';
 
 const router = createBrowserRouter([
     { 
@@ -13,6 +15,11 @@ const router = createBrowserRouter([
     { 
         path: "/dashboard", 
         element: <Dashboard />,
+        children: [
+            { path: "configuration", element: <Configuration />},
+            { index: true, element: <Overview />},
+        ]
+            
     },
 
 ])
