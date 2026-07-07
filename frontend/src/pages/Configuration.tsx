@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '/src/configuration.module.css'
-
 
 interface Category {
     id: number;
@@ -20,41 +19,43 @@ function CategoryTable({ categories, onDelete, onUpdate }: CategoryTableProps  )
         <table className={styles.categoriesTable}>
             <thead>
                 <tr>
-                    <th colSpan={4}>Categories</th>
+                    <th colSpan={4} className={styles.th}>Categories</th>
                 </tr>
                 <tr>
-                    <th>Category Name</th>
-                    <th>Monthly amount</th>
-                    <th>Goal amounts</th>
-                    <th></th>
+                    <th className={styles.th}>Category Name</th>
+                    <th className={styles.th}>Monthly amount</th>
+                    <th className={styles.th}>Goal amounts</th>
+                    <th className={styles.th}></th>
                 </tr>
             </thead>
             <tbody>
                 {categories.map((category) => (
                     <tr key={category.id}>
-                        <td>
+                        <td className={styles.td}>
                         <input
-                        className={ styles.input}
+                            className={ styles.input }
                             type='text'
                             value={category.name}
                             onChange={(e) => onUpdate(category.id, 'name', e.target.value)}
                          />
                          </td>
-                        <td>
+                        <td className={styles.td}>
                             <input
+                                className={ styles.input }
                                 type="number"
                                 value={category.monthly}
                                 onChange={(e) => onUpdate(category.id, 'monthly', Number(e.target.value))}
                             />
                         </td>
-                        <td>
+                        <td className={styles.td}>
                             <input
+                                className={ styles.input }
                                 type="number"
                                 value={category.goal}
                                 onChange={(e) => onUpdate(category.id, 'goal', Number(e.target.value))}
                             />
                         </td>
-                        <td>
+                        <td className={styles.td}>
                             <button onClick={() => onDelete(category.id)}>Delete</button>
                         </td>
                     </tr>
@@ -67,6 +68,26 @@ function CategoryTable({ categories, onDelete, onUpdate }: CategoryTableProps  )
 function Configuration(){
 
     const [categories, setCategories] = useState<Category[]>([]);
+
+    useEffect(() =>  {
+        const loadCategories = async () =>{
+
+            const response = await fetch("/categories.php", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" }, 
+            });
+        
+            const data: Category[] = await response.json();
+
+
+            setCategories(data);
+        }
+
+        loadCategories()
+
+        .catch(console.error)
+    }, [])
 
 
     function addCategory() {

@@ -64,7 +64,7 @@ function LogIn() {
       <form onSubmit={(e) => e.preventDefault()}>
         <label className={ styles.label }>Enter Login:</label>
         <input 
-        className={ styles.input }
+          className={ styles.input }
           type="text"
           name="login"
           value={inputs.login || ''}

@@ -1,21 +1,21 @@
 .categoriesTable{
     margin: auto;
 }
-table, th, td {
+.categoriesTable, .th, .td {
   border: 1px solid black;
   border-collapse: collapse;
   border-width: 5px;
 }
 
-th, td{
+.th, .td{
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-td:nth-child(2),td:nth-child(3){
+.td:nth-child(2),td:nth-child(3){
     background-color: rgb(1, 77, 131);
 }
 
-td:nth-child(1){
+.td:nth-child(1){
     background-color: rgb(116, 16, 24);
 }
 
@@ -30,7 +30,7 @@ td:nth-child(1){
     display: inline-block;
 }
 
-input{
+.input{
     background: none;
     border: none;
 }
