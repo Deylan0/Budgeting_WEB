@@ -74,6 +74,10 @@ This is my small private project for budgeting. I will be using it to follow and
 
 ---
 
+### v1.2.1-alpha - 08/07/2026
+
+- Creating categories locally
+- Working on creating categories and saving them on db
 
 ---
 
