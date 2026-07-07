@@ -1,0 +1,36 @@
+.categoriesTable{
+    margin: auto;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-width: 5px;
+}
+
+th, td{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+td:nth-child(2),td:nth-child(3){
+    background-color: rgb(1, 77, 131);
+}
+
+td:nth-child(1){
+    background-color: rgb(116, 16, 24);
+}
+
+.addButton{
+    background-color: rgba(255, 0, 0, 0.9);
+    font-size: 20px;
+    margin: 5px;
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: inline-block;
+}
+
+input{
+    background: none;
+    border: none;
+}

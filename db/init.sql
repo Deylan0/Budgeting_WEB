@@ -5,5 +5,14 @@ CREATE TABLE IF NOT EXISTS users(
     password VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS categories(
+    id INT AUTO_INCREMENT PRIMARY,
+    user_id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    monthly DECIMAL(10,2) NOT NULL,
+    goal DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)
+
 INSERT INTO users (username, email, password)
 VALUES ("admin", "admin@gmail.com", "$2y$10$QSD0fF1Lxl0vuecDnY4rp.Kyk8L.FJnn9AANkb2ZMhNBfgDSrK00.");

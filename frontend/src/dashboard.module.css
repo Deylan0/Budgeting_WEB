@@ -1,5 +1,4 @@
 .dashboardDiv{
-    background-color: rgba(55, 55, 55, 0.8);
     min-height: 100vh;
 }
 
@@ -27,15 +26,11 @@
 }
 
 .active{
-    animation: pulse 10s infinite;
+    animation: pulse 6s infinite;
 }
 
 @keyframes pulse {
-    0% { background-color: rgba(255, 0, 0, 0.9); }
-    14% { background-color: rgba(255, 127, 0, 0.9); }
-    28% { background-color: rgba(255, 255, 0, 0.9); }
-    42% { background-color: rgba(0, 255, 0, 0.9); }
-    57% { background-color: rgba(0, 0, 255, 0.9); }
-    71% { background-color: rgba(55, 0, 182, 0.9); }
-    85% { background-color: rgba(100, 0, 231, 0.9); }
+    0%, 100% { background-color: rgb(116, 16, 24); }
+    33% { background-color: rgb(1, 77, 131); }
+    66% { background-color: rgb(1, 15, 25); }
 }

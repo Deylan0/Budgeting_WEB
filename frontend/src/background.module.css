@@ -1,0 +1,14 @@
+.backgroundColor{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgb(116, 16, 24), rgb(1, 77, 131), rgb(1, 15, 25));
+}
+
+.zyrafcia{
+    position: fixed;
+    top: 95%;
+    left: 0%;
+    width: 32px;
+}

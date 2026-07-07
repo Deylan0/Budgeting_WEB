@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, NavLink, Outlet} from 'react-router-dom';
 import styles from '/src/dashboard.module.css';
-import Configuration from './Configuration';
 
 
 function Dashboard(){
-    const [id, setId] = useState<number>();
     const [username, setUsername] = useState<string>();
     const options = [
         {label: 'Configuration', path: 'configuration'},
@@ -24,7 +22,6 @@ function Dashboard(){
         .then(res => res.json())
         .then(data =>{
             if(data.loggedIn){
-                setId(data.userId);
                 setUsername(data.username);
             }else{
                 navigate("/notfound")

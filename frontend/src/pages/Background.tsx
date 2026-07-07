@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import spider from '/src/assets/pajonczek.png';
 import myLove from '/src/assets/kochaniemoje.png';
+import styles from '/src/background.module.css';
 
 // Typ dla każdego elementu tła
 interface BackgroundItem {
@@ -37,15 +38,7 @@ function Background() {
   }, []);
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: -1,
-        overflow: 'hidden',
-        background: 'linear-gradient(to bottom, #741018, #014d83, #010f19)',
-      }}
-    >
+    <div className={ styles.backgroundColor }>
       {items.map(({ id, x, y, rotation, scale }) => (
         <img
           key={id}
@@ -66,7 +59,7 @@ function Background() {
       <img
         src={myLove}
         alt=""
-        style={{ position: "fixed", top: "95%", left: "0%", width: '32px' }}
+        className={styles.zyrafcia}
       />
     </div>
   );
