@@ -31,17 +31,17 @@ try {
 
 
 try {
-    $sql="SELECT id, name, monthly, goal  FROM categories WHERE user_id = :id;";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':id', $_SESSION['user_id']);
+    $sqlCheck="SELECT id, name, monthly, goal  FROM categories WHERE user_id = :id;";
+    $stmt = $conn->prepare($sqlCheck);
+    $stmt->bindParam(':id', $_SESSION['user_id'],);
     $stmt->execute();
-    $categories = $stmt->fetchAll();
+    $categories_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($categories);
+    echo json_encode($categories_list);
     
 }catch(PDOException $e){
+    http_response_code(500);
     echo "Error: " . $e->getMessage();
 }
-
 
 ?>

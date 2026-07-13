@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useNavigate, NavLink, Outlet} from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useNavigate, NavLink, Outlet, useOutletContext, data} from 'react-router-dom';
 import styles from '/src/dashboard.module.css';
 
+interface Category {
+    id: number;
+    name: string;
+    monthly: number;
+    goal: number;
+}
 
 function Dashboard(){
     const [username, setUsername] = useState<string>();
+    const [categories, setCategories] = useState<Category[]>([]);
+    const isDataLoaded = useRef(false);
     const options = [
         {label: 'Configuration', path: 'configuration'},
         {label: 'Overview', path: ''},
@@ -16,6 +24,7 @@ function Dashboard(){
         styles.navLink,
         isActive ? styles.active : ""
     ].join(" ");
+
 
     useEffect(()=>{
         fetch("/userData.php", { credentials: "include"})
@@ -32,7 +41,54 @@ function Dashboard(){
         navigate('/notfound');
         });
 
+        const loadCategories = async () =>{
+            try {
+                const response = await fetch("/pullCategories.php", {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" }, 
+                });
+            
+                const data: Category[] = await response.json();
+
+                setCategories(data);
+
+                isDataLoaded.current = true;
+            } catch (error) {
+               console.error(error);
+            }
+        }
+
+        loadCategories()
+
+        .catch(console.error)
     },[])
+
+    useEffect(()=>{
+        if (!isDataLoaded.current) {
+            return;
+        }
+        const updateCategories = async () =>{
+            const response = await fetch("/categories.php", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" }, 
+            body: JSON.stringify({categories: categories})
+            });
+
+            if (!response.ok) {
+            console.log("Server error, please try again later"); 
+            return;
+            }
+        }
+        const timeoutId = setTimeout(() => {
+            updateCategories();
+        }, 1000)
+        return () => clearTimeout(timeoutId);
+        
+    },[categories])
+
+
     
     return(
         <div className={styles.dashboardDiv}>
@@ -52,10 +108,14 @@ function Dashboard(){
                 )}
             </nav>
             <main>
-                <Outlet />
+                <Outlet  context={[categories, setCategories] as [Category[], React.Dispatch<React.SetStateAction<Category[]>>] }/>
             </main>
         </div>
     )
 }
 
 export default Dashboard
+
+export function useCategories(){
+    return useOutletContext<[Category[], React.Dispatch<React.SetStateAction<Category[]>>]>();
+}

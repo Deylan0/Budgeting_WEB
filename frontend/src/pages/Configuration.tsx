@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
 import styles from '/src/configuration.module.css'
+import { useCategories } from './Dashboard';
 
 interface Category {
     id: number;
     name: string;
     monthly: number;
-    goal?: number;
+    goal: number;
 }
 
 interface CategoryTableProps {
@@ -66,36 +66,14 @@ function CategoryTable({ categories, onDelete, onUpdate }: CategoryTableProps  )
     }
 
 function Configuration(){
-
-    const [categories, setCategories] = useState<Category[]>([]);
-
-    useEffect(() =>  {
-        const loadCategories = async () =>{
-
-            const response = await fetch("/categories.php", {
-            method: "POST",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" }, 
-            });
-        
-            const data: Category[] = await response.json();
-
-
-            setCategories(data);
-        }
-
-        loadCategories()
-
-        .catch(console.error)
-    }, [])
-
+    const [categories, setCategories] = useCategories();
 
     function addCategory() {
         const newCategory: Category = {
-            id: Date.now(),
+            id: -Date.now(),
             name: '',
             monthly: 0,
-            goal: 0,
+            goal: 0
         };
         setCategories((prev) => [...prev, newCategory]);
     }
