@@ -41,27 +41,16 @@ function Dashboard(){
         navigate('/notfound');
         });
 
-        const loadCategories = async () =>{
-            try {
-                const response = await fetch("/pullCategories.php", {
-                method: "POST",
-                credentials: "include",
-                headers: { "Content-Type": "application/json" }, 
-                });
-            
-                const data: Category[] = await response.json();
+        fetch("/pullCategories.php", { credentials: "include" })
+        .then(res => res.json())
+        .then(data => {
+            setCategories(data.categories);
+            isDataLoaded.current = true;
+        })
+        .catch(err => {
+            console.error("Failed to fetch categories:", err);
+        });
 
-                setCategories(data);
-
-                isDataLoaded.current = true;
-            } catch (error) {
-               console.error(error);
-            }
-        }
-
-        loadCategories()
-
-        .catch(console.error)
     },[])
 
     useEffect(()=>{
@@ -69,7 +58,7 @@ function Dashboard(){
             return;
         }
         const updateCategories = async () =>{
-            const response = await fetch("/categories.php", {
+            const response = await fetch("/updateCategories.php", {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" }, 

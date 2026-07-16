@@ -26,22 +26,28 @@ try {
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e){
-    die("Could not connect. " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode(["error" => "Database connection failed", "details" => $e->getMessage()]);
+    exit();
 }
 
 
 try {
     $sqlCheck="SELECT id, name, monthly, goal  FROM categories WHERE user_id = :id;";
     $stmt = $conn->prepare($sqlCheck);
-    $stmt->bindParam(':id', $_SESSION['user_id'],);
+    $stmt->bindParam(':id', $_SESSION['user_id']);
     $stmt->execute();
     $categories_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($categories_list);
+    if (!$categories_list) {
+        $categories_list = [];
+    }
+
+    echo json_encode(["categories" => $categories_list]);
     
 }catch(PDOException $e){
     http_response_code(500);
-    echo "Error: " . $e->getMessage();
+    echo json_encode(["error" => "Query failed", "details" => $e->getMessage()]);
 }
 
 ?>
