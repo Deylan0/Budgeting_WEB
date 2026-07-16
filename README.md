@@ -81,6 +81,12 @@ This is my small private project for budgeting. I will be using it to follow and
 
 ---
 
+### v1.4.0-alpha - 16/07/2026
+
+- Working Categories system on db
+
+---
+
 ##  License
 
 Private project — no license granted for redistribution.
